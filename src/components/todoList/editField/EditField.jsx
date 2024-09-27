@@ -1,11 +1,8 @@
-import { useRef } from "react";
 import { Form } from "react-bootstrap";
 
 export const EditField = (props) => {
-  const formInputRef = useRef();
-
-  const handleChange = () => {
-    const newTodoTitle = formInputRef.current.value;
+  const handleChange = (event) => {
+    const newTodoTitle = event.target.value;
     props.setNewTodoTitle(newTodoTitle);
   };
 
@@ -15,13 +12,10 @@ export const EditField = (props) => {
         <Form.Label>Change Todo</Form.Label>
         <Form.Control
           type="text"
-          ref={formInputRef}
           placeholder="New Todo Name"
           value={props.newTodoTitle}
-          onChange={(event) => {
-            handleChange(event);
-          }}
-        ></Form.Control>
+          onChange={handleChange}
+        />
       </Form.Group>
     </Form>
   );
