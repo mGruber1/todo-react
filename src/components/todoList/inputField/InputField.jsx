@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button, Form } from "react-bootstrap";
 
 import { v4 as uuid4 } from "uuid";
 
@@ -13,8 +14,8 @@ export const InputField = (props) => {
     setTodoDescription(event.target.value);
   };
   return (
-    <div className="input-group w-75">
-      <input
+    <Form className="w-75 d-flex justify-content-center">
+      <Form.Control
         type="text"
         className="form-control"
         placeholder="Todo..."
@@ -23,7 +24,7 @@ export const InputField = (props) => {
         value={todoTitle}
         onChange={handleTodoTitleChange}
       />
-      <input
+      <Form.Control
         type="text"
         className="form-control"
         placeholder="Description..."
@@ -32,7 +33,7 @@ export const InputField = (props) => {
         value={todoDescription}
         onChange={handleDescriptionChange}
       />
-      <button
+      <Button
         onClick={() => {
           if (todoTitle.length !== 0) {
             const newTodo = {
@@ -50,7 +51,7 @@ export const InputField = (props) => {
         id="button-addon2"
       >
         Save
-      </button>
-    </div>
+      </Button>
+    </Form>
   );
 };
